@@ -13,7 +13,7 @@ namespace Protótipo
         {
             throw new NotImplementedException();
         }
-
+       
         public string[] valores()
         {
             string[] array = { "a", "b", "c", "d", "e",
@@ -21,6 +21,7 @@ namespace Protótipo
             "q","r","s","v","u","t","x"};
             return array;
         }
+       
 
         public string[] relaciomento_de_aresta(string[] l)
         {

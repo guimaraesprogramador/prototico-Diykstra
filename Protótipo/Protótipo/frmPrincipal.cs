@@ -27,26 +27,26 @@ namespace Protótipo
         {
             try
             {
-                ComboBox tarefa = (ComboBox)comboBox2.Items[comboBox2.SelectedIndex];
-                ComboBox algoritmo = (ComboBox)comboBox3.Items[comboBox3.SelectedIndex];
-                if (String.Empty != tarefa.ToString() && String.Empty != algoritmo.ToString())
+
+             /*   if (String.Empty !=labri.tarefa.ToString() && String.Empty != algoritmo.ToString())
                 {
                     if (tarefa.ToString() == "Labirinto" && algoritmo.ToString() == "Dijkstra")
                     {
                         comboBox4.Items.Add(labri.valores());
                         comboBox5.Items.Add(labri.valores());
                     }
-                }
-            }catch(Exception e)
+                }*/
+            }
+            catch (Exception e)
             {
 
             }
-           
+
         }
         
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            labri.tarefa = sender.ToString();
+            labri.tarefa = comboBox2.Items[comboBox2.SelectedIndex].ToString();
 
         }
 
