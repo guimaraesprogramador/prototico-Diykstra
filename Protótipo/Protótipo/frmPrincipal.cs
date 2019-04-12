@@ -17,32 +17,36 @@ namespace Protótipo
             
             InitializeComponent();
          labri = new labririnto();
+            comboBox4.Items.Clear();
+            comboBox5.Items.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-        }
-        private void elementos()
-        {
-            try
+            int anty = 1;
+            int ultimo = 0; int primeira = 0;
+            string v = comboBox5.Items[comboBox5.SelectedIndex].ToString();
+            string u = comboBox4.Items[comboBox4.SelectedIndex].ToString();
+            List<string> procurar = labri.valores();
+            for(int i = 0; i < procurar.Count; i++)
             {
-
-             /*   if (String.Empty !=labri.tarefa.ToString() && String.Empty != algoritmo.ToString())
+                if (procurar[i] == v)
                 {
-                    if (tarefa.ToString() == "Labirinto" && algoritmo.ToString() == "Dijkstra")
-                    {
-                        comboBox4.Items.Add(labri.valores());
-                        comboBox5.Items.Add(labri.valores());
-                    }
-                }*/
-            }
-            catch (Exception e)
-            {
-
+                    ultimo = i;
+                    anty = anty + 1;
+                }
+                if (procurar[i] == u)
+                {
+                    primeira = i;
+                    anty = anty + 1;
+                }
             }
 
+          int valor =  labri.esquerta(anty);
+            labri.direita(valor);
+            
         }
+        
         
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -52,6 +56,14 @@ namespace Protótipo
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            labri.algortimo = comboBox3.Items[comboBox3.SelectedIndex].ToString();
+            List<string> valores = labri.elementos(labri.tarefa, labri.algortimo);
+            for(int i = 0; i < valores.Count; i++)
+            {
+                comboBox4.Items.Add(valores[i].ToString());
+                comboBox5.Items.Add(valores[i].ToString());
+            }
+           
             
         }
     }

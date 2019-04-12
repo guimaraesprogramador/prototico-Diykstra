@@ -8,12 +8,12 @@ namespace Protótipo.iadpter
 {
     interface problema:labririnto_interface,Deutschland_interface
     {
-       string[] relaciomento_de_aresta(string[] l);
+       void relaciomento_de_aresta(int u,int v, int anty);
        
     }
     public interface labririnto_interface
     {
-        string[] valores();
+        List<string> valores();
     }
    public interface Deutschland_interface
     {
