@@ -23,31 +23,65 @@ namespace Protótipo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int anty = 1;
-            int ultimo = 0; int primeira = 0;
+            fazer_labrindo();
             string v = comboBox5.Items[comboBox5.SelectedIndex].ToString();
             string u = comboBox4.Items[comboBox4.SelectedIndex].ToString();
-            List<string> procurar = labri.valores();
-            for(int i = 0; i < procurar.Count; i++)
-            {
-                if (procurar[i] == v)
-                {
-                    ultimo = i;
-                    anty = anty + 1;
-                }
-                if (procurar[i] == u)
-                {
-                    primeira = i;
-                    anty = anty + 1;
-                }
-            }
+            labri.procurar_caminho(v, u);
+            //List<string> procurar = labri.valores();
+            //for (int i = 0; i < procurar.Count; i++)
+            //{
+            //    if (procurar[i] == v)
+            //    {
+            //        ultimo = i;
+            //        anty = anty + 1;
+            //    }
+            //    if (procurar[i] == u)
+            //    {
+            //        primeira = i;
+            //        anty = anty + 1;
+            //    }
+            //}
 
-          int valor =  labri.esquerta(anty);
-            labri.direita(valor);
-            
+            //int valor = labri.esquerta(anty);
+            //labri.direita(valor);
+
         }
-        
-        
+
+        public void fazer_labrindo()
+        {
+            // horizontais
+            labri.add_labirinto("a", "b", 1);
+            labri.add_labirinto("c", "d", 1);
+            labri.add_labirinto("d", "e", 1);
+            labri.add_labirinto("e", "f", 1);
+            labri.add_labirinto("h", "i", 1);
+            labri.add_labirinto("j", "k", 1);
+            labri.add_labirinto("s", "t", 1);
+            labri.add_labirinto("t", "u", 1);
+            labri.add_labirinto("w", "x", 1);
+            labri.add_labirinto("c", "d", 1);
+            labri.add_labirinto("c", "d", 1);
+            labri.add_labirinto("c", "d", 1);
+            // verticais
+             labri.add_labirinto("a", "g", 1);
+             labri.add_labirinto("g", "m", 1);
+             labri.add_labirinto("m", "s", 1);
+             labri.add_labirinto("m", "s", 1);
+             labri.add_labirinto("m", "s", 1);
+             labri.add_labirinto("m", "s", 1);
+             labri.add_labirinto("c", "i", 1);
+             labri.add_labirinto("i", "o", 1);
+             labri.add_labirinto("o", "u", 1);
+             labri.add_labirinto("d", "j", 1);
+             labri.add_labirinto("j", "p", 1);
+             labri.add_labirinto("p", "v", 1);
+             labri.add_labirinto("e", "k", 1);
+             labri.add_labirinto("k", "q", 1);
+             labri.add_labirinto("q", "w", 1);
+             labri.add_labirinto("f", "l", 1);
+             labri.add_labirinto("l", "r", 1);
+             labri.add_labirinto("r", "x", 1);
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             labri.tarefa = comboBox2.Items[comboBox2.SelectedIndex].ToString();

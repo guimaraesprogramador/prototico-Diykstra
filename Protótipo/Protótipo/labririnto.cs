@@ -46,35 +46,36 @@ namespace Protótipo
             return null;
 
         }
-        public List<string> caminho = new List<string>();
-        public int esquerta( int anty)
+        public List<object> caminho = new List<object>();
+        public List<String> procurar_caminho(string inicia,string destino)
         {
-            int anterior = anty+1;
-            for (int i = 0; i < anty; i++)
+            List<string> caminho_inicial = new List<string>();
+            List<string> rastro = new List<string>();
+            rastro.Add(inicia);
+            string anterior = null;
+            string proxima = null;
+            object[] a = caminho.ToArray();
+        for(int i = 0; i < a.Length; i++)
             {
-                caminho.Add(i.ToString());
-                anterior = anterior + i;
+                for(int y =0;y<caminho.Count;y++)
+                {
+                    
+                }
             }
-            caminho.Add(anterior.ToString());
-            return anterior;
+            
+            
+            caminho.Clear();
+            return rastro;
         }
-        public void direita(int anty)
+
+        public void add_labirinto(string posicao_x,string posicao_y, int valor)
         {
-            int proximo = 0;
-            for (int i = 0; i < caminho.Count; i++)
+            object[] array =
             {
-                if (Convert.ToInt32(caminho[i]) < anty)
-                {
-                    anty = anty - Convert.ToInt32(caminho[i]);
-                    if (Convert.ToInt32(caminho[i]) > 1) proximo = anty + 1;
-                }
-                else
-                {
-                    anty = anty - 1;
-                }
-            }
-            caminho.Add(proximo.ToString());
-            caminho.Add(anty.ToString());
+              posicao_x,posicao_y,valor
+            };
+            caminho.Add(array);
+            
         }
         public void relaciomento_de_aresta(int u, int v, int anty)
         {
