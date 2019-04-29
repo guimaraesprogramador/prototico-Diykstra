@@ -23,55 +23,48 @@ namespace Protótipo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            posicao_do_labrindo();
-            fazer_labrindo();
+           
+            fazer_labrindo_vertice();
             string v = comboBox5.Items[comboBox5.SelectedIndex].ToString();
             string u = comboBox4.Items[comboBox4.SelectedIndex].ToString();
-            labri.procurar_caminho(v, u);
+            labri.procurar_caminho( u,v);
             textBox3.Text = labri.distancia.ToString();
 
         }
-        private void posicao_do_labrindo()
+       
+        public void fazer_labrindo_vertice()
         {
-            List<string> lista = labri.valores();
-            for (int i = 0;i<lista.Count;i++)
-            {
-                labri.grafo(lista[i],i);
-            }
 
-        }
-        public void fazer_labrindo()
-        {
-            // horizontais
-            labri.add_labirinto("a", "b", 1);
-            labri.add_labirinto("c", "d", 1);
-            labri.add_labirinto("d", "e", 1);
-            labri.add_labirinto("e", "f", 1);
-            labri.add_labirinto("h", "i", 1);
-            labri.add_labirinto("j", "k", 1);
-            labri.add_labirinto("o", "p", 1);
-            labri.add_labirinto("s", "t", 1);
-            labri.add_labirinto("t", "u", 1);
-            labri.add_labirinto("w", "x", 1);
+            //// horizontais
+            labri.add_labirinto_vertices("a", "b", 1);
+            labri.add_labirinto_vertices("c", "d", 1);
+            labri.add_labirinto_vertices("d", "e", 1);
+            labri.add_labirinto_vertices("e", "f", 1);
+            labri.add_labirinto_vertices("h", "i", 1);
+            labri.add_labirinto_vertices("j", "k", 1);
+            labri.add_labirinto_vertices("o", "p", 1);
+            labri.add_labirinto_vertices("s", "t", 1);
+            labri.add_labirinto_vertices("t", "u", 1);
+            labri.add_labirinto_vertices("w", "x", 1);
             // verticais
-             labri.add_labirinto("a", "g", 1);
-             labri.add_labirinto("g", "m", 1);
-             labri.add_labirinto("m", "s", 1);
-             labri.add_labirinto("m", "s", 1);
-             labri.add_labirinto("m", "s", 1);
-             labri.add_labirinto("m", "s", 1);
-             labri.add_labirinto("c", "i", 1);
-             labri.add_labirinto("i", "o", 1);
-             labri.add_labirinto("o", "u", 1);
-             labri.add_labirinto("d", "j", 1);
-             labri.add_labirinto("j", "p", 1);
-             labri.add_labirinto("p", "v", 1);
-             labri.add_labirinto("e", "k", 1);
-             labri.add_labirinto("k", "q", 1);
-             labri.add_labirinto("q", "w", 1);
-             labri.add_labirinto("f", "l", 1);
-             labri.add_labirinto("l", "r", 1);
-             labri.add_labirinto("r", "x", 1);
+            labri.add_labirinto_vertices("a", "g", 1);
+             labri.add_labirinto_vertices("g", "m", 1);
+             labri.add_labirinto_vertices("m", "s", 1);
+             labri.add_labirinto_vertices("b", "h", 1);
+             labri.add_labirinto_vertices("h", "n", 1);
+             labri.add_labirinto_vertices("n", "t", 1);
+             labri.add_labirinto_vertices("c", "i", 1);
+             labri.add_labirinto_vertices("i", "o", 1);
+             labri.add_labirinto_vertices("o", "u", 1);
+             labri.add_labirinto_vertices("d", "j", 1);
+             labri.add_labirinto_vertices("j", "p", 1);
+             labri.add_labirinto_vertices("p", "v", 1);
+             labri.add_labirinto_vertices("e", "k", 1);
+             labri.add_labirinto_vertices("k", "q", 1);
+             labri.add_labirinto_vertices("q", "w", 1);
+             labri.add_labirinto_vertices("f", "l", 1);
+             labri.add_labirinto_vertices("l", "r", 1);
+             labri.add_labirinto_vertices("r", "x", 1);
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
