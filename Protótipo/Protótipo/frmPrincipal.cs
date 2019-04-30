@@ -27,7 +27,8 @@ namespace Protótipo
             fazer_labrindo_vertice();
             string v = comboBox5.Items[comboBox5.SelectedIndex].ToString();
             string u = comboBox4.Items[comboBox4.SelectedIndex].ToString();
-            labri.procurar_caminho( u,v);
+             labri.procurar_caminho( u,v);
+            textBox1.Text = labri.texto;
             textBox3.Text = labri.distancia.ToString();
 
         }
@@ -65,6 +66,7 @@ namespace Protótipo
              labri.add_labirinto_vertices("f", "l", 1);
              labri.add_labirinto_vertices("l", "r", 1);
              labri.add_labirinto_vertices("r", "x", 1);
+             labri.add_labirinto_adjacentes();
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {

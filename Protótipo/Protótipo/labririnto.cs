@@ -51,55 +51,93 @@ namespace Protótipo
         }
         public List<object> caminho = new List<object>();
         public int distancia { get; set; }
-        public List<String> procurar_caminho(string inicia,string destino)
+        public void procurar_caminho(string inicia,string destino)
         {
-            List<string> caminho_inicial = new List<string>();
             List<string> rastro = new List<string>();
            
-            object anterior = null;
-            object proxima = null;
+            
             int o = 0;
             if (inicia == "m") throw new Exception("armario");
             else if (inicia == "o") throw new Exception("dragão");
             else if (inicia == "p") throw new Exception("tesouro");
             else if (inicia == "r") throw new Exception("armario");
             else if (inicia == "v") throw new Exception("sem saida");
-            List<string> list = valores();
             unsafe
             {
-
-                string distancia = null;
-               
-                    for (int i = 0; i < v.Length; i++)
+                int soma = 0;
+                string proxima_y = null;
+                string proxima_x = null;
+                string anterior_x = null;
+                string anterior_y = null;
+               for(int p = 0; p < a.Length; p++)
+                {
+                    if (Convert.ToString(a[p]->vertice) == "a")
                     {
-                        if (
-                            Convert.ToString(v[i]->x) != Convert.ToString(a[i]->vertice))
-                        {
-
-                            continue;
-                        }
-                        else if (Convert.ToString(v[i]->x) == destino)
-                        {
-                            distancia = Convert.ToString(v[i]->x);
-                            break;
-                        }
-                        else
-                        {
-                            rastro.Add(Convert.ToString(v[i]->x));
-                        }
-
+                        soma = a[p]->adj;
+                        rastro.Add(Convert.ToString(a[p]->vertice));
                     }
-                
-                
-
+                    else
+                    {
+                        
+                            if(Convert.ToString(a[p]->vertice)== destino)
+                            {
+                                distancia = a[p]->adj + soma;
+                            rastro.Add(Convert.ToString(a[p]->vertice));
+                                break;
+                            }
+                            soma = a[p]->adj + 1;
+                            for(int i = 0; i < v.Length; i++)
+                            {
+                                proxima_y = Convert.ToString(v[i+1]->y);
+                                proxima_x = Convert.ToString(v[i+1]->x);
+                                if (verificar_erro(proxima_x,proxima_y))
+                                {
+                                    
+                                soma = soma + v[i]->next;
+                                    if(proxima_x == destino|| proxima_y == destino)
+                                {
+                                    rastro.Add(proxima_y);
+                                    rastro.Add(destino);
+                                    distancia = soma;
+                                    break;
+                                }
+                                anterior_x = Convert.ToString(v[i-1]->x);
+                                anterior_y = Convert.ToString(v[i - 1]->y);
+                                if (verificar_erro(anterior_x,anterior_y))
+                                {
+                                    continue;
+                                }
+                                else
+                                {
+                                    rastro.Add(proxima_x);
+                                }
+                                
+                            }
+                            }
+                        }
+                    
+                }
+               
+            }   
+            for(int t = 0; t < rastro.Count; t++)
+            {
+                texto = texto + rastro[t].ToString() + ",";
             }
-
-
-            return rastro;
         }
+        public string texto = null; 
             
-            
-        
+        public bool verificar_erro(string palavra1,string palavra2)
+        {
+            if (palavra1 == "m" || palavra2 == "m"
+                || palavra1 == "o" && palavra2 == "o"||
+                palavra1 == "p"||palavra2=="p"||
+                palavra1=="r"|| palavra2=="r")
+            {
+                return false;
+            }
+            else if (palavra1 == palavra2) return false;
+            return true;
+        }
        public unsafe struct adjacente
         {
             public char vertice;
@@ -168,6 +206,7 @@ namespace Protótipo
             {
                 for(int i = 0; i < horionzal.Length; i++)
                 {
+                    
                     a[i] = grafo_adjacente(horionzal[i]);
                 }
                 o = 0;
@@ -179,10 +218,21 @@ namespace Protótipo
         }
        static unsafe adjacente* grafo_adjacente( string letra)
         {
-            adjacente* novo = (adjacente*)Marshal.AllocHGlobal(sizeof(adjacente));
-            novo->vertice = char.Parse(letra);
-            novo->adj = 1;
-            return novo;
+            if(letra == "a")
+            {
+                adjacente* novos = (adjacente*)Marshal.AllocHGlobal(sizeof(adjacente));
+                novos->vertice = char.Parse(letra);
+                novos->adj = 0;
+                return novos;
+            }
+            else
+            {
+                adjacente* novo = (adjacente*)Marshal.AllocHGlobal(sizeof(adjacente));
+                novo->vertice = char.Parse(letra);
+                novo->adj = 1;
+                return novo;
+            }
+            
 
         }
       
