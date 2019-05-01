@@ -9,13 +9,10 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 namespace Protótipo
 {
-  public  class labririnto : problema
+  public  class labririnto :mapa,problema
     {
         public string tarefa { get; set; }
-        public string[] Deutschland()
-        {
-            throw new NotImplementedException();
-        }
+        
        
         public List<string> valores()
         {
@@ -35,11 +32,15 @@ namespace Protótipo
 
                  if (String.Empty !=tarefa && String.Empty != algoritmo)
                    {
-                       if (tarefa.ToString() == "Labirinto" && algoritmo == "Dijkstra")
-                       {
+                    if (tarefa.ToString() == "Labirinto" && algoritmo == "Dijkstra")
+                    {
                         return valores();
-                       }
-                    if (tarefa == "Labirinto" && algoritmo == "A*") return null;
+                    }
+                    else if (tarefa == "Alemanha" && algoritmo == "Dijkstra")
+                    {
+
+                        return Deutschland();
+                    }
                    }
             }
             catch (Exception e)
@@ -49,8 +50,7 @@ namespace Protótipo
             return null;
 
         }
-        public List<object> caminho = new List<object>();
-        public int distancia { get; set; }
+        public static int distancia_1 { get; set; }
         public void procurar_caminho(string inicia,string destino)
         {
             List<string> rastro = new List<string>();
@@ -88,7 +88,7 @@ namespace Protótipo
 
                             if (Convert.ToString(a[p]->vertice) == destino)
                             {
-                                distancia = a[p]->adj + soma;
+                                distancia_1 = a[p]->adj + soma;
                                 rastro.Add(Convert.ToString(a[p]->vertice));
                                 break;
                             }
@@ -105,7 +105,7 @@ namespace Protótipo
                                     {
                                         rastro.Add(proxima_y);
                                         rastro.Add(destino);
-                                        distancia = soma;
+                                        distancia_1 = soma;
                                         t = true;
                                         break;
                                     }
@@ -135,7 +135,7 @@ namespace Protótipo
             }
             
         }
-        public string texto = null; 
+        public static string texto = null;
             
         public bool verificar_erro(string palavra1,string palavra2)
         {

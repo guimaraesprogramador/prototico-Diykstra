@@ -24,12 +24,23 @@ namespace Protótipo
         private void button1_Click(object sender, EventArgs e)
         {
            
-            fazer_labrindo_vertice();
+            
             string v = comboBox5.Items[comboBox5.SelectedIndex].ToString();
             string u = comboBox4.Items[comboBox4.SelectedIndex].ToString();
-             labri.procurar_caminho( u,v);
-            textBox1.Text = labri.texto;
-            textBox3.Text = labri.distancia.ToString();
+            if(labri.tarefa == "Alemanha")
+            {
+                labri.distancia();
+                labri.caminho(u, v);
+            }
+            else if(labri.tarefa == "Labirinto")
+            {
+                fazer_labrindo_vertice();
+                labri.procurar_caminho(u, v);
+                
+            }
+            textBox1.Text = labririnto.texto.ToString();
+            textBox3.Text = labririnto.distancia_1.ToString();
+
 
         }
        

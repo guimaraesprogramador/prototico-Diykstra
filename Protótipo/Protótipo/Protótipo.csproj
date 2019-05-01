@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="iadpter\problema.cs" />
     <Compile Include="labririnto.cs" />
+    <Compile Include="mapa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmPrincipal.resx">

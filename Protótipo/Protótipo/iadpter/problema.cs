@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Protótipo.iadpter
 {
-    interface problema:labririnto_interface,Deutschland_interface
+    interface problema:labririnto_interface
     {
        void relaciomento_de_aresta(int u,int v, int anty);
        
@@ -17,6 +17,9 @@ namespace Protótipo.iadpter
     }
    public interface Deutschland_interface
     {
-       string[] Deutschland();
+       List<string> Deutschland();
+        void distancia();
+        void caminho(string inicia, string destino);
+       
     }
 }
