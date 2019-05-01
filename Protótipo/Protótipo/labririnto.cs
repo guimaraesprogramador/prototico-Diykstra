@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Protótipo.iadpter;
 using System.IO;
 using System.Runtime.InteropServices;
-
+using System.Windows.Forms;
 namespace Protótipo
 {
   public  class labririnto : problema
@@ -57,76 +57,83 @@ namespace Protótipo
            
             
             int o = 0;
-            if (inicia == "m") throw new Exception("armario");
-            else if (inicia == "o") throw new Exception("dragão");
-            else if (inicia == "p") throw new Exception("tesouro");
-            else if (inicia == "r") throw new Exception("armario");
-            else if (inicia == "v") throw new Exception("sem saida");
-            unsafe
+            if (inicia == "m"|| destino == "m") MessageBox.Show("armario");
+            else if (inicia == "o"|| destino =="o") MessageBox.Show("dragão");
+            else if (inicia == "p"||destino=="p") MessageBox.Show("tesouro");
+            else if (inicia == "r"|| destino=="r") MessageBox.Show("armario");
+            else if (inicia == "v" || destino == "v") MessageBox.Show("sem saida");
+            else if (destino == "x" || inicia == "x") MessageBox.Show("sem saida");
+            else if (destino == "g" || inicia == "g") MessageBox.Show("sem saida");
+            else if (destino == "s" || inicia == "s") MessageBox.Show("sem saida");
+            else
             {
-                int soma = 0;
-                string proxima_y = null;
-                string proxima_x = null;
-                string anterior_x = null;
-                string anterior_y = null;
-                bool t = false;
-               for(int p = 0; p < a.Length; p++)
+                unsafe
                 {
-                    if (t == true) break;
-                    if (Convert.ToString(a[p]->vertice) == "a")
+                    int soma = 0;
+                    string proxima_y = null;
+                    string proxima_x = null;
+                    string anterior_x = null;
+                    string anterior_y = null;
+                    bool t = false;
+                    for (int p = 0; p < a.Length; p++)
                     {
-                        soma = a[p]->adj;
-                        rastro.Add(Convert.ToString(a[p]->vertice));
-                    }
-                    else
-                    {
-                        
-                            if(Convert.ToString(a[p]->vertice)== destino)
+                        if (t == true) break;
+                        if (Convert.ToString(a[p]->vertice) == "a")
+                        {
+                            soma = a[p]->adj;
+                            rastro.Add(Convert.ToString(a[p]->vertice));
+                        }
+                        else
+                        {
+
+                            if (Convert.ToString(a[p]->vertice) == destino)
                             {
                                 distancia = a[p]->adj + soma;
-                            rastro.Add(Convert.ToString(a[p]->vertice));
+                                rastro.Add(Convert.ToString(a[p]->vertice));
                                 break;
                             }
                             soma = a[p]->adj + 1;
-                            for(int i = 0; i < v.Length; i++)
+                            for (int i = 0; i < v.Length; i++)
                             {
-                                proxima_y = Convert.ToString(v[i+1]->y);
-                                proxima_x = Convert.ToString(v[i+1]->x);
-                                if (verificar_erro(proxima_x,proxima_y))
+                                proxima_y = Convert.ToString(v[i + 1]->y);
+                                proxima_x = Convert.ToString(v[i + 1]->x);
+                                if (verificar_erro(proxima_x, proxima_y))
                                 {
-                                    
-                                
-                                    if(proxima_x == destino|| proxima_y == destino)
-                                {
-                                    rastro.Add(proxima_y);
-                                    rastro.Add(destino);
-                                    distancia = soma;
-                                    t = true;
-                                    break;
+
+
+                                    if (proxima_x == destino || proxima_y == destino)
+                                    {
+                                        rastro.Add(proxima_y);
+                                        rastro.Add(destino);
+                                        distancia = soma;
+                                        t = true;
+                                        break;
+                                    }
+                                    anterior_x = Convert.ToString(v[i - 1]->x);
+                                    anterior_y = Convert.ToString(v[i - 1]->y);
+                                    if (verificar_erro(anterior_x, anterior_y))
+                                    {
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        soma = soma + v[i]->next;
+                                        rastro.Add(proxima_x);
+                                    }
+
                                 }
-                                anterior_x = Convert.ToString(v[i-1]->x);
-                                anterior_y = Convert.ToString(v[i - 1]->y);
-                                if (verificar_erro(anterior_x,anterior_y))
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    soma = soma + v[i]->next;
-                                    rastro.Add(proxima_x);
-                                }
-                                
-                            }
                             }
                         }
-                    
+
+                    }
+
                 }
-               
-            }   
-            for(int t = 0; t < rastro.Count; t++)
-            {
-                texto = texto + rastro[t].ToString() + ",";
+                for (int t = 0; t < rastro.Count; t++)
+                {
+                    texto = texto + rastro[t].ToString() + ",";
+                }
             }
+            
         }
         public string texto = null; 
             
