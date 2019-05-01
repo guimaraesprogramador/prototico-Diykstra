@@ -37,16 +37,16 @@ namespace Protótipo
         {
 
             //// horizontais
-            labri.add_labirinto_vertices("a", "b", 1);
-            labri.add_labirinto_vertices("c", "d", 1);
-            labri.add_labirinto_vertices("d", "e", 1);
-            labri.add_labirinto_vertices("e", "f", 1);
-            labri.add_labirinto_vertices("h", "i", 1);
-            labri.add_labirinto_vertices("j", "k", 1);
-            labri.add_labirinto_vertices("o", "p", 1);
-            labri.add_labirinto_vertices("s", "t", 1);
-            labri.add_labirinto_vertices("t", "u", 1);
-            labri.add_labirinto_vertices("w", "x", 1);
+            //labri.add_labirinto_vertices("a", "b", 1);
+            //labri.add_labirinto_vertices("c", "d", 1);
+            //labri.add_labirinto_vertices("d", "e", 1);
+            //labri.add_labirinto_vertices("e", "f", 1);
+            //labri.add_labirinto_vertices("h", "i", 1);
+            //labri.add_labirinto_vertices("j", "k", 1);
+            //labri.add_labirinto_vertices("o", "p", 1);
+            //labri.add_labirinto_vertices("s", "t", 1);
+            //labri.add_labirinto_vertices("t", "u", 1);
+            //labri.add_labirinto_vertices("w", "x", 1);
             // verticais
             labri.add_labirinto_vertices("a", "g", 1);
              labri.add_labirinto_vertices("g", "m", 1);

@@ -69,8 +69,10 @@ namespace Protótipo
                 string proxima_x = null;
                 string anterior_x = null;
                 string anterior_y = null;
+                bool t = false;
                for(int p = 0; p < a.Length; p++)
                 {
+                    if (t == true) break;
                     if (Convert.ToString(a[p]->vertice) == "a")
                     {
                         soma = a[p]->adj;
@@ -93,12 +95,13 @@ namespace Protótipo
                                 if (verificar_erro(proxima_x,proxima_y))
                                 {
                                     
-                                soma = soma + v[i]->next;
+                                
                                     if(proxima_x == destino|| proxima_y == destino)
                                 {
                                     rastro.Add(proxima_y);
                                     rastro.Add(destino);
                                     distancia = soma;
+                                    t = true;
                                     break;
                                 }
                                 anterior_x = Convert.ToString(v[i-1]->x);
@@ -109,6 +112,7 @@ namespace Protótipo
                                 }
                                 else
                                 {
+                                    soma = soma + v[i]->next;
                                     rastro.Add(proxima_x);
                                 }
                                 
